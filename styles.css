@@ -1,0 +1,222 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace, Arial, Helvetica, sans-serif;
+}
+nav{
+    background-color:black;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 2%;
+    align-items: center;
+    position: fixed;
+    background-color: transparent;
+
+}
+.navLeft{
+    height: 20%;
+    width: 10%;
+}
+.navMiddle{
+    display: flex;
+    width:30%;
+    justify-content: space-between;
+    color: white;
+}
+.navRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;
+}
+.rightIcon{
+    height: 30px;
+    width: 30px;
+}
+ .common{
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1px;
+ }
+ .content{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5%;
+    margin: 6% auto;
+    color: white;
+ }
+
+ .content>h1{
+    font-size: 3.5rem;
+    margin: 0 auto;
+ }
+ .content>p{
+    width: 90%;
+    font-size: 1.8rem;
+    margin: 0 auto;
+    text-align: center;
+ }
+ .content>.button{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+ }
+ .OrderNow{
+    height: 40px;
+    width: 240px;
+    background-color: #3E6AE1;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.008rem;
+ }
+ .LearnMore{
+    height: 40px;
+    width: 240px;
+    background-color: aliceblue;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.008rem;
+ }
+.first{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-Y-2-Desktop-US.png); 
+}
+.second{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-US.png);
+}
+.second>.content>.button{
+    margin-top: 46%;
+}
+.third{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Cybertruck-Hero-US-Desktop-v4.jpg);
+}
+.third>.content>.button{
+    margin-top: 47%;
+}
+.fourth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-X-Desktop-US.png);
+}
+.fourth>.content>.button{
+    margin-top: 50%;
+}
+.fifth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-US.png);
+}
+.fifth>.content>.button{
+    margin-top: 48%;
+}
+.sixth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-SolarPanels-01-Desktop);
+}
+.sixth>.content>.button{
+    margin-top: 42%;
+}
+.seventh{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-SolarRoof-Desktop-US.png);
+}
+.seventh>.content>.button{
+    margin-top: 43%;
+}
+.eighth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Powerwall-Desktop-US.png);
+}
+.eighth>.content>.button{
+    margin-top: 50%;
+}
+.nineth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Accessories-Desktop-US.png);
+}
+.nineth>.content>.button{
+    margin-top: 55%;
+}
+.tenth{
+    background-image: url(https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-We-Are-Tesla-Desktop-Poster.png);
+    position: relative;
+}
+.tenth>.content{
+    margin:0;
+ position: absolute;
+ width: fit-content;
+ bottom: 300px;
+ left:100px;
+ display: flex;
+ flex-direction: column;
+ gap:1px;
+ 
+ color: white;
+}
+.tenth>.content>h1{
+  font-size: 2rem;
+}
+.tenth>.content>.button>button{
+    height: 40px;
+    width: 200px;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color:rgb(69, 68, 68);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.008rem;
+}
+footer{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    gap: 40px;
+    overflow: hidden;
+}
+footer>p{
+    width: 60%;
+    margin: 0 auto;
+    font-size: 0.8rem;
+}
+.footersub{
+    display: flex;
+    width: 45%;
+    font-size: 0.8rem;
+    justify-content: space-between;
+
+}
+.footerbutton{
+   display: flex;
+   justify-content: center;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+}
+.footerbutton>button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.601);
+    height: 40px;
+    width: 240px;
+    background-color: aliceblue;
+    border-radius: 4px;
+    color: black;
+    font-weight: 600;
+    padding-right: 10px;
+    /* font-size: 0.9rem; */
+    /* letter-spacing: 0.008rem; */
+}
