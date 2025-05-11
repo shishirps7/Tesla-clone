@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+     <div class="blur-overlay"></div>
     <nav>
         <div class="navLeft"><img src="./Tesla_Logo-removebg-preview (2).png" width="100%" height="100%"></div>
         <div class="navMiddle">
@@ -22,7 +23,7 @@
             <div class="usericon rightIcon"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle opacity="0.5" cx="12" cy="9" r="3" stroke="#ffffff" stroke-width="1.5"></circle> <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="1.5"></circle> <path opacity="0.5" d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path> </g></svg></div>
         </div>
     </nav>
-    <div class="blur-overlay"></div>
+   
     <div class="vehiclesDropdown menu">
         <div class="dropdownleft">
             <div class="cartype">
@@ -203,6 +204,7 @@
     let nav = document.querySelector("nav");
     let vehicleLink = document.querySelector(".vehicles");
     let vehicleDropdown = document.querySelector(".vehiclesDropdown");
+    let blurOverlay = document.querySelector(".blur-overlay"); // Fix: select the blur overlay
     const svgLogo = `
         <svg class="tds-icon tds-icon-logo-wordmark tds-site-logo-icon" viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M0 .1a9.7 9.7 0 0 0 7 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 0 0 7-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 0 0 6-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 0 0-8.7 7h39.9v-21h-31.2v-7zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7m0 13.8h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7m0 14.1h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7M308.5 7h26a9.6 9.6 0 0 0 7-7h-40a9.6 9.6 0 0 0 7 7">
@@ -214,67 +216,62 @@
     const middleMenu = document.querySelectorAll(".navMiddle a div");
     const rightIconSvg = document.querySelector(".rightIcon svg");
     const icons = document.querySelectorAll(".rightIcon svg path");
-   const icons2 = document.querySelectorAll(".usericon svg");
+    const icons2 = document.querySelectorAll(".usericon svg");
     vehicleLink.addEventListener('mouseover', function() {
       vehicleDropdown.style.display = "flex";
         setTimeout(() => {
-             middleMenu.forEach(menu=>menu.style.color = "#000")
-         // Change text color on hover
-    //      blurOverlay.style.display = "block";
-    // blurOverlay.style.backgroundColor = "red";
-        nav.style.backgroundColor = "white"; // Add some transparency
-        nav.style.color="black"
-        vehicleLink.style.cursor = "pointer";
-        logoImage.style.display = "none"; // Hide the image
-        navLeft.innerHTML = svgLogo; // Append the SVG logo
-        rightIconSvg.setAttribute("stroke", "#000");
-        icons.forEach(icon => {
-        // When mouse enters (hover)
-            icon.setAttribute("stroke", "#000"); // Change to red on hover
-    });
-       icons2.forEach(icon => {
-        const shapes = icon.querySelectorAll("path, circle");
-        shapes.forEach(shape => {
-            // When mouse enters (hover)
-           
-                shape.setAttribute("stroke", "#000"); // Change stroke to red on hover
-        })
-        });
+            middleMenu.forEach(menu=>menu.style.color = "#000")
+            // Show and style blur overlay
+            blurOverlay.style.display = "block";
+            blurOverlay.style.opacity = "1";
+            blurOverlay.style.backdropFilter = "blur(8px)";
+            nav.style.backgroundColor = "white";
+            nav.style.color="black";
+            vehicleLink.style.cursor = "pointer";
+            if (logoImage) logoImage.style.display = "none";
+            navLeft.innerHTML = svgLogo;
+            rightIconSvg.setAttribute("stroke", "#000");
+            icons.forEach(icon => {
+                icon.setAttribute("stroke", "#000");
+            });
+            icons2.forEach(icon => {
+                const shapes = icon.querySelectorAll("path, circle");
+                shapes.forEach(shape => {
+                    shape.setAttribute("stroke", "#000");
+                })
+            });
             vehicleDropdown.style.opacity = "1";
         }, 0);
     });
 
-    // Add mouseleave event to vehicleLink to hide dropdown if the mouse leaves both elements
+    // Hide dropdown and reset nav/overlay on mouseleave
     vehicleDropdown.addEventListener('mouseleave', function(event) {
-        if (!vehicleDropdown.contains(event.relatedTarget)) { // Check if the mouse is not inside the dropdown
+        if (!vehicleDropdown.contains(event.relatedTarget)) {
             vehicleDropdown.style.opacity = "0";
             setTimeout(() => {
                 vehicleDropdown.style.display = "none";
-                nav.style.backdropFilter = "none"; // Remove blur
-            nav.style.backgroundColor = "";
+                // Hide and reset blur overlay
+                blurOverlay.style.display = "none";
+                blurOverlay.style.opacity = "0";
+                blurOverlay.style.backdropFilter = "";
+                nav.style.backgroundColor = "";
+                nav.style.color = "";
                 navLeft.innerHTML = '<img src="./Tesla_Logo-removebg-preview (2).png" width="100%" height="100%" id="logoImage">';
-               middleMenu.forEach(menu=>menu.style.color = "")
-               rightIconSvg.style.stroke = "#ffffff"; 
-               icons.forEach(icon => {//
-               // icon.addEventListener("mouseout", function() {
-            icon.setAttribute("stroke", "#ffffff"); // Reset to white
-        }); 
-        icons2.forEach(icon => {
-        const shapes = icon.querySelectorAll("path, circle");
-        shapes.forEach(shape => {
-            // When mouse enters (hover)
-           
-                shape.setAttribute("stroke", "#ffffff"); // Change stroke to red on hover
-        })
-        }); // Reset text color
+                middleMenu.forEach(menu=>menu.style.color = "");
+                rightIconSvg.setAttribute("stroke", "#ffffff");
+                icons.forEach(icon => {
+                    icon.setAttribute("stroke", "#ffffff");
+                });
+                icons2.forEach(icon => {
+                    const shapes = icon.querySelectorAll("path, circle");
+                    shapes.forEach(shape => {
+                        shape.setAttribute("stroke", "#ffffff");
+                    })
+                });
             }, 300);
-            
-            // Reset nav background blur when mouse leaves
-             // Reset background color
         }
     });
-
-</script>
+   </script>
 
 </body>
 </html>
